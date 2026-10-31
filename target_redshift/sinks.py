@@ -259,7 +259,7 @@ class RedshiftSink(SQLSink):
         ]
         return [
             {
-                key: (json.dumps(value).replace("None", "") if key in object_keys else value)
+                key: (json.dumps(value) if key in object_keys else value)
                 for key, value in self.conform_record(record).items()
             }
             for record in records
